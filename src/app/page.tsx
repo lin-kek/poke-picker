@@ -21,9 +21,18 @@ export default function HomePage() {
         <div className="mt-6">
           <Link
             href="/picker/all"
-            className="inline-flex w-full items-center justify-center rounded-2xl bg-zinc-900 px-5 py-4 text-sm font-semibold text-white sm:w-auto"
+            className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-2xl border-2 border-zinc-900 px-5 py-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md sm:w-auto"
           >
-            Start with all Pokémon
+            <span className="absolute inset-x-0 top-0 h-1/2 bg-red-500" />
+            <span className="absolute inset-x-0 bottom-0 h-1/2 bg-white" />
+            <span className="absolute inset-x-0 top-1/2 h-0.75 -translate-y-1/2 bg-zinc-900" />
+            <span className="absolute left-1/2 top-1/2 z-10 flex h-7 w-7 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-zinc-900 bg-white">
+              <span className="h-3 w-3 rounded-full bg-zinc-200" />
+            </span>
+
+            <span className="relative z-20 rounded-full bg-black px-4 py-1.5 text-sm font-bold text-white shadow-sm">
+              Start with all Pokémon
+            </span>
           </Link>
         </div>
       </section>
