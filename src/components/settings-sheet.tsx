@@ -63,6 +63,12 @@ export function SettingsSheet() {
                     <p className="text-sm font-semibold text-zinc-900">
                       {option.label}
                     </p>
+
+                    {option.value === "dream_world" && (
+                      <p className="mt-1 text-xs text-zinc-500">
+                        Dream World sprites do not have shiny variants.
+                      </p>
+                    )}
                   </div>
 
                   <input
