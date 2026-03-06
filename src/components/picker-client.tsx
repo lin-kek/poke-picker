@@ -209,7 +209,7 @@ export function PickerClient({ mode, initialPool }: PickerClientProps) {
             <button
               type="button"
               onClick={handleRestart}
-              className="rounded-2xl bg-zinc-900 px-5 py-3 text-sm font-semibold text-white"
+              className="cursor-pointer rounded-2xl bg-zinc-900 px-5 py-3 text-sm font-semibold text-white"
             >
               Restart
             </button>

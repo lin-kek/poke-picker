@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { SpriteSettingsProvider } from "@/components/providers/sprite-settings-provider";
 import { SettingsSheet } from "@/components/settings-sheet";
+import { ShinyToggleButton } from "@/components/shiny-toggle-button";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -27,6 +28,7 @@ export default function RootLayout({
       >
         <SpriteSettingsProvider>
           {children}
+          <ShinyToggleButton />
           <SettingsSheet />
         </SpriteSettingsProvider>
       </body>

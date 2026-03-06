@@ -13,6 +13,8 @@ import type { PokemonSpriteOption } from "@/types/pokemon";
 interface SpriteSettingsContextValue {
   spriteOption: PokemonSpriteOption;
   setSpriteOption: (value: PokemonSpriteOption) => void;
+  isShiny: boolean;
+  toggleShiny: () => void;
 }
 
 const SpriteSettingsContext = createContext<SpriteSettingsContextValue | null>(
@@ -20,19 +22,27 @@ const SpriteSettingsContext = createContext<SpriteSettingsContextValue | null>(
 );
 
 const STORAGE_KEY = "pokemon-picker:sprite-option";
+const SHINY_STORAGE_KEY = "pokemon-picker:is-shiny";
 const DEFAULT_SPRITE: PokemonSpriteOption = "official-artwork";
 
 export function SpriteSettingsProvider({ children }: PropsWithChildren) {
   const [spriteOption, setSpriteOptionState] =
     useState<PokemonSpriteOption>(DEFAULT_SPRITE);
+  const [isShiny, setIsShiny] = useState(false);
 
   useEffect(() => {
-    const savedValue = window.localStorage.getItem(
+    const savedSprite = window.localStorage.getItem(
       STORAGE_KEY,
     ) as PokemonSpriteOption | null;
 
-    if (savedValue) {
-      setSpriteOptionState(savedValue);
+    const savedShiny = window.localStorage.getItem(SHINY_STORAGE_KEY);
+
+    if (savedSprite) {
+      setSpriteOptionState(savedSprite);
+    }
+
+    if (savedShiny) {
+      setIsShiny(savedShiny === "true");
     }
   }, []);
 
@@ -41,12 +51,22 @@ export function SpriteSettingsProvider({ children }: PropsWithChildren) {
     window.localStorage.setItem(STORAGE_KEY, value);
   }
 
+  function toggleShiny() {
+    setIsShiny((prev) => {
+      const nextValue = !prev;
+      window.localStorage.setItem(SHINY_STORAGE_KEY, String(nextValue));
+      return nextValue;
+    });
+  }
+
   const value = useMemo(
     () => ({
       spriteOption,
       setSpriteOption,
+      isShiny,
+      toggleShiny,
     }),
-    [spriteOption],
+    [spriteOption, isShiny],
   );
 
   return (
@@ -61,7 +81,7 @@ export function useSpriteSettings() {
 
   if (!context) {
     throw new Error(
-      "useSpriteSettings deve ser usado dentro de SpriteSettingsProvider",
+      "useSpriteSettings must be used inside SpriteSettingsProvider",
     );
   }
 

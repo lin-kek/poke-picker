@@ -95,6 +95,25 @@ export async function getPokemonCardsByIds(
 export function getPokemonSpriteUrl(
   pokemon: PokemonCardData,
   spriteOption: PokemonSpriteOption,
+  isShiny = false,
 ): string | null {
-  return pokemon.sprites[spriteOption] ?? pokemon.sprites.front_default ?? null;
+  const baseUrl =
+    pokemon.sprites[spriteOption] ?? pokemon.sprites.front_default ?? null;
+
+  if (!baseUrl) {
+    return null;
+  }
+
+  if (!isShiny) {
+    return baseUrl;
+  }
+
+  if (spriteOption === "dream_world") {
+    return baseUrl;
+  }
+
+  return baseUrl.replace(
+    /\/(\d+)\.(png|gif|svg|jpg|jpeg|webp)$/i,
+    "/shiny/$1.$2",
+  );
 }

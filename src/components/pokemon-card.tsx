@@ -26,8 +26,8 @@ export function PokemonCard({
   disabled = false,
   variant = "picker",
 }: PokemonCardProps) {
-  const { spriteOption } = useSpriteSettings();
-  const spriteUrl = getPokemonSpriteUrl(pokemon, spriteOption);
+  const { spriteOption, isShiny } = useSpriteSettings();
+  const spriteUrl = getPokemonSpriteUrl(pokemon, spriteOption, isShiny);
 
   const isUnoptimized =
     spriteUrl?.endsWith(".svg") || spriteUrl?.endsWith(".gif") || false;
