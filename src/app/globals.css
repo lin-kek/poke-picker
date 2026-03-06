@@ -1,26 +1,27 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-plus-jakarta);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #f8fafc;
+  --foreground: #18181b;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='220' height='220' viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Ccircle cx='110' cy='110' r='52' fill='%23d4d4d8' fill-opacity='0.22'/%3E%3Cpath d='M58 110h32' stroke='%23f8fafc' stroke-width='10' stroke-linecap='round'/%3E%3Cpath d='M130 110h32' stroke='%23f8fafc' stroke-width='10' stroke-linecap='round'/%3E%3Ccircle cx='110' cy='110' r='26' stroke='%23f8fafc' stroke-width='10'/%3E%3Ccircle cx='110' cy='110' r='16' fill='%23f8fafc'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='220' height='220' viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Ccircle cx='110' cy='110' r='52' fill='%23d4d4d8' fill-opacity='0.22'/%3E%3Cpath d='M58 110h32' stroke='%23f8fafc' stroke-width='10' stroke-linecap='round'/%3E%3Cpath d='M130 110h32' stroke='%23f8fafc' stroke-width='10' stroke-linecap='round'/%3E%3Ccircle cx='110' cy='110' r='26' stroke='%23f8fafc' stroke-width='10'/%3E%3Ccircle cx='110' cy='110' r='16' fill='%23f8fafc'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat, repeat;
+  background-size:
+    220px 220px,
+    220px 220px;
+  background-position:
+    0 0,
+    110px 110px;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
