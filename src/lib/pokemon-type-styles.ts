@@ -101,7 +101,7 @@ export const POKEMON_TYPE_STYLES: Record<string, PokemonTypeStyle> = {
   },
   rock: {
     gradientFrom: "from-yellow-100",
-    gradientTo: "to-stone-100",
+    gradientTo: "to-amber-100",
     ring: "border-yellow-400",
     orb: "bg-yellow-400/40",
     badge: "bg-yellow-700 text-white",
